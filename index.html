@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A modern hotel booking management dashboard">
+    <title>StayEase | Hotel Booking System</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- =====================================================
+         GOOGLE ANALYTICS 4
+         
+         IMPORTANT:
+         Replace BOTH instances of G-XXXXXXXXXX below
+         with your actual GA4 Measurement ID.
+         
+         Example:
+         G-ABC123XYZ
+         ===================================================== -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B3HZZV2Q53"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-B3HZZV2Q53');
+    </script>
+
+</head>
+
+<body>
+
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-mark">S</div>
+
+            <div>
+                <span class="eyebrow">HOTEL MANAGEMENT</span>
+                <h1>StayEase</h1>
+            </div>
+
+        </div>
+
+        <div class="header-badge">
+            Booking Dashboard
+        </div>
+
+    </header>
+
+
+    <nav class="nav-bar" aria-label="Main navigation">
+
+        <a class="nav-link active" href="#summary-section">
+            Dashboard
+        </a>
+
+        <a class="nav-link" href="#booking-form-section">
+            Add Booking
+        </a>
+
+        <a class="nav-link" href="#bookings-section">
+            Bookings
+        </a>
+
+    </nav>
+
+
+    <main>
+
+        <!-- =================================================
+             SUMMARY
+             ================================================= -->
+
+        <section
+            id="summary-section"
+            class="summary-grid"
+            aria-label="Booking summary"
+        >
+
+            <article class="summary-card">
+
+                <div class="summary-icon">
+                    ▣
+                </div>
+
+                <div>
+
+                    <span>
+                        Total bookings
+                    </span>
+
+                    <strong id="summary-total-value">
+                        0
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <article class="summary-card">
+
+                <div class="summary-icon">
+                    ₹
+                </div>
+
+                <div>
+
+                    <span>
+                        Revenue collected
+                    </span>
+
+                    <strong id="summary-payment-value">
+                        ₹0
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <article class="summary-card accent-card">
+
+                <div class="summary-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <span>
+                        Booking status
+                    </span>
+
+                    <strong>
+                        Active
+                    </strong>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- =================================================
+             BOOKING FORM
+             ================================================= -->
+
+        <section
+            id="booking-form-section"
+            class="section-container booking-panel"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-kicker">
+                        RESERVATIONS
+                    </span>
+
+                    <h2 id="form-title">
+                        Book a room
+                    </h2>
+
+                    <p>
+                        Add a new guest reservation or update
+                        an existing booking.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="booking-form">
+
+                <input
+                    type="hidden"
+                    id="booking-id"
+                >
+
+
+                <div class="form-grid">
+
+
+                    <!-- Guest Name -->
+
+                    <div class="field">
+
+                        <label for="guest-name">
+                            Guest name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="guest-name"
+                            placeholder="e.g. Ananya Sharma"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Contact -->
+
+                    <div class="field">
+
+                        <label for="guest-contact">
+                            Contact number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="guest-contact"
+                            placeholder="+91 98765 43210"
+                            autocomplete="tel"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Room -->
+
+                    <div class="field field-wide">
+
+                        <label for="room-type">
+                            Room type
+                        </label>
+
+                        <select
+                            id="room-type"
+                            required
+                        >
+
+                            <option value="Single">
+                                Single Room — ₹3,000 / night
+                            </option>
+
+                            <option value="Standard">
+                                Standard Room — ₹5,000 / night
+                            </option>
+
+                            <option value="Family Suite">
+                                Family Suite — ₹7,000 / night
+                            </option>
+
+                            <option value="Premium">
+                                Premium Room — ₹8,000 / night
+                            </option>
+
+                            <option value="Presidential Suite">
+                                Presidential Suite — ₹15,000 / night
+                            </option>
+
+                            <option value="Penthouse Suite">
+                                Penthouse Suite — ₹20,000 / night
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Check In -->
+
+                    <div class="field">
+
+                        <label for="check-in">
+                            Check-in
+                        </label>
+
+                        <input
+                            type="date"
+                            id="check-in"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Check Out -->
+
+                    <div class="field">
+
+                        <label for="check-out">
+                            Check-out
+                        </label>
+
+                        <input
+                            type="date"
+                            id="check-out"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Payment -->
+
+                    <div class="payment-box field-wide">
+
+                        <div>
+
+                            <span class="payment-label">
+                                Estimated total
+                            </span>
+
+                            <small>
+                                Calculated automatically from room
+                                type and stay length
+                            </small>
+
+                        </div>
+
+                        <output id="payment-display">
+                            ₹0
+                        </output>
+
+                        <input
+                            type="hidden"
+                            id="payment"
+                            value="0"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        id="cancel-edit-btn"
+                        class="btn btn-secondary"
+                        hidden
+                    >
+                        Cancel edit
+                    </button>
+
+                    <button
+                        type="submit"
+                        id="submit-btn"
+                        class="btn btn-primary"
+                    >
+                        Book Room
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- =================================================
+             CURRENT BOOKINGS
+             ================================================= -->
+
+        <section
+            id="bookings-section"
+            class="section-container"
+        >
+
+            <div class="section-heading bookings-heading">
+
+                <div>
+
+                    <span class="section-kicker">
+                        RESERVATIONS
+                    </span>
+
+                    <h2>
+                        Current bookings
+                    </h2>
+
+                    <p>
+                        Search, update, or cancel guest
+                        reservations.
+                    </p>
+
+                </div>
+
+                <div
+                    class="booking-count"
+                    id="booking-count"
+                >
+                    0 bookings
+                </div>
+
+            </div>
+
+
+            <!-- Search -->
+
+            <div class="search-wrap">
+
+                <span class="search-icon">
+                    ⌕
+                </span>
+
+                <input
+                    type="search"
+                    id="current-booking-search"
+                    placeholder="Search by guest name..."
+                    oninput="searchCurrentBookings()"
+                    aria-label="Search bookings by guest name"
+                >
+
+            </div>
+
+
+            <!-- Table -->
+
+            <div class="table-wrap">
+
+                <table id="bookings-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Guest
+                            </th>
+
+                            <th>
+                                Contact
+                            </th>
+
+                            <th>
+                                Room
+                            </th>
+
+                            <th>
+                                Check-in
+                            </th>
+
+                            <th>
+                                Check-out
+                            </th>
+
+                            <th>
+                                Payment
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="bookings-list"></tbody>
+
+                </table>
+
+
+                <div
+                    id="empty-state"
+                    class="empty-state"
+                >
+
+                    <div class="empty-icon">
+                        ⌂
+                    </div>
+
+                    <h3>
+                        No bookings yet
+                    </h3>
+
+                    <p>
+                        Add your first reservation using
+                        the form above.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer>
+
+        <span>
+            © StayEase Hotel Booking System
+        </span>
+
+        <span>
+            Project by Sujal Chavan
+        </span>
+
+    </footer>
+
+
+    <!-- =====================================================
+         STAYEASE JAVASCRIPT
+         ===================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
